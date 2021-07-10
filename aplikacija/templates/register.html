@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="/static/register_style.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="container register" >
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Welcome</h3>
+                       
+                         <a href="/login"><input type="submit" name="" value="Login"/><br/></a>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Registruj se</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-12">
+                                    <form method="POST"> 
+                                        {% csrf_token %}
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Username*" value="" name="username"/>
+                                            
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" name="firstname"/>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" name="lastname" />
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email *" value="" name="email"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="address" class="form-control" placeholder="Your Address *" value="" name="address"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" placeholder="Your Phone number *" value="" name="number"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" value="" name="password1" />
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control"  placeholder="Confirm Password *" name="password2" />
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="male" checked>
+                                                   
+                                                    <span> Male </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="female">
+                                                    
+                                                    <span>Female </span> 
+                                                </label>
+                                            </div>
+                                        </div>
+                                   
+                                        <div class="col-md-8">
+                                        
+                                            <input type="submit" class="btnRegister"  value="Register"/>
+                                        </div>
+                                    </form>         
+                                    </div>
+                                   
+                                </div>
+                            </div>
+            
+                              
+                         </div>
+                            
+                        </div>
+                    </div>
+                </div>
+

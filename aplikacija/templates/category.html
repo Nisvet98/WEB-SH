@@ -1,0 +1,152 @@
+<link rel="stylesheet" href="/static/desktop_style.css">
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+{% for cat in cate %}
+
+{%  if cat.id == 1 %}
+          
+          
+  <div class="container-xxxl">  
+
+    
+ 
+
+    <div class="col-lg-12 col-xl-7 col-sm-9  col-md-12 col-12 pc row" id="traka" style="background-color: white; margin: 0 auto; ">
+       <div class="row" >
+        {% for proii in category %}
+        
+        {% for proi in proii %}
+        {% for pro in proi %}
+
+        {% if pro.periferija_i_memorija %}
+   
+       
+         <div class="row" id="traka"  >
+      
+          
+            <div class="col-lg-12 col-xl-12 col-sm-12  col-md-12 col-12 " style="background-color: white ; color:black;">
+            
+              <H4 style="display: inline;">{{ pro.periferija_i_memorija }}</H4> 
+              <a href="/podkategorija/{{pro.id}}" id="{{pro.id}}" style="display: inline; float: right; color: black;"> 
+                  <button class=" my-2 my-sm-0 btn_search " type="submit" style="background-color: red; color: white;">Pogledaj više</button>     </a>
+              
+              <div style="height: 10px;  "> <hr style="border:1px solid gray; " > </div>
+             </div>
+          
+          </div>  
+        
+            {% endif %}
+         {% endfor %} 
+          {% for pro in proi %}
+             {% if pro.periferija_i_memorija %}
+   
+             {% else %}
+  
+            <div class="col-lg-3 col-xl-3 col-sm-12  col-md-12 col-12 link" style="display:block; margin-left: -12px;"> 
+            <a class="link" href="/svipro/{{ pro.id }}/{{ pro.id_kategorija }}/{{ pro.id_podkategorija }}" id="{{ pro.id }},{{ pro.id_kategorija }},{{ pro.id_podkategorija }}">
+                <div class="wsk-cp-product ">
+                  <div class="wsk-cp-img">
+                   <img src="/{{ pro.slika }}" alt="Product" class="img-responsive" />
+                  
+                    </div>
+                  <div class="wsk-cp-text" style="padding-top: 100%;">
+  
+                    <div class="title-product">
+                      <h3>{{ pro.naziv }}</h3>
+                    </div>
+                    <div class="description-prod">
+
+                      <p>{{ pro.opis }}</p>
+                    </div>
+
+                      <div class="korpica">
+                        <a href="/shopCart/{{ pro.id }}" id="{{ pro.id }}" style="float: right; padding-right: 6px; padding-top: 6px;"> 
+                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"  class="bi bi-cart white" viewBox="0 0 16 16">
+                          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg></a>
+                       </div>
+                    <div class="card-footer">
+                      <div class="wcf-left"><span class="price">{{ pro.cijena }}</span></div>
+                    
+                    </div>
+                  </div>
+                </div>
+              </a>
+              </div>
+              
+              {% endif %}
+              {% endfor %}
+              {% endfor %}
+              {% endfor %}
+             
+              
+          
+</div>
+       
+</div>
+{% else %}
+<div class="container-xxl ">
+  <div class="row"  style= "background-color: white;">
+
+   
+    {% for cat in cate %}
+    
+     
+     <div class="col-lg-12 col-xl-12 col-sm-12  col-md-12 col-12 " style="background-color: white ; color:black; padding-left: -40px;" >
+     
+       <H4 style="display: inline;">{{ cat.kategorija }}  </H4> 
+       <div style="height: 10px;  "> <hr style="border:1px solid gray; " > </div>
+      </div> 
+   
+    {% endfor %}
+   
+   
+
+ 
+   {% for  pro in categoryW %}
+
+       <div class="col-md-3 link"> 
+       <a class="link" href="/svipro/{{ pro.id }}/{{ pro.id_kategorija }}/{{ pro.id_podkategorija }}" id="{{ pro.id }},{{ pro.id_kategorija }},{{ pro.id_podkategorija }}">
+           <div class="wsk-cp-product ">
+             <div class="wsk-cp-img">
+              <img src="/{{ pro.slika }}" alt="Product" class="img-responsive" />
+             
+               </div>
+             <div class="wsk-cp-text" style="padding-top: 100%;">
+
+               <div class="title-product">
+                 <h3>{{ pro.naziv }}</h3>
+               </div>
+               <div class="description-prod">
+
+                 <p>{{ pro.opis }}</p>
+               </div>
+               <div class="korpica">
+                <a href="/shopCart/{{ pro.id }}" id="{{ pro.id }}" style="float: right; padding-right: 6px; padding-top: 6px;"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"  class="bi bi-cart white" viewBox="0 0 16 16">
+                  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg></a>
+               </div>
+               <div class="card-footer">
+                 <div class="wcf-left"><span class="price">{{ pro.cijena }}</span></div>
+  
+               </div>
+             </div>
+           </div>
+         </a>
+         </div>
+         {% endfor %}
+         
+     
+       </div>
+  
+</div>
+</div>
+ {% endif %}  
+ {% endfor %}
+{% endblock %}
+

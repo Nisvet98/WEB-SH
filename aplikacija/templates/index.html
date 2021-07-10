@@ -1,0 +1,152 @@
+<link rel="stylesheet" href="/static/slide_style.css">
+<link rel="stylesheet" href="/static/desktop_style.css">
+<link rel="stylesheet" href="/static/korpica.css">
+
+<!-- CSS only -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+
+
+
+
+<div class="col-lg-8 col-xl-12 col-sm-12  col-md-12 col-12 card" style=" margin: 0 auto; height: 600px; background-color: rgb(247, 247, 247)" >
+  
+   {% for sli in slide %} 
+  <div class="card_part card_part-one">
+    <img    src="/{{sli.slika1}}"  alt="...">
+  </div>
+<div class="card_part card_part-two">
+<img    src="/{{sli.slika2}}"  alt="...">
+  </div>
+<div class="card_part card_part-three">
+    <img   src="/{{sli.slika3}}"  alt="...">
+  </div>
+{% endfor %}
+</div>
+
+
+
+
+<div class="col-lg-12 col-xl-2 col-sm-12  col-md-12 col-12 " style=" float:left; background-color: rgb(247, 247, 247); ">
+  {% for rekl in reklama1 %} 
+  <img  style=" padding-bottom: 350px;" class="col-lg-4 col-xl-12 col-sm-10  col-md-4 col-12"  src="/{{rekl.slika1}}" alt="ne raid">
+  
+  <img style=" padding-bottom: 350px;" class="col-lg-3 col-xl-12 col-sm-10  col-md-3 col-12"  src="/{{rekl.slika2}}" alt="ne raid">
+  
+  <img style=" padding-bottom: 350px;" class="col-lg-4 col-xl-12 col-sm-10  col-md-4 col-12"  src="/{{rekl.slika3}}" alt="ne raid">
+  {% endfor %}
+  </div> 
+  
+  <div class="col-lg-12 col-xl-2 col-sm-12  col-md-12 col-12 " style=" float:right; background-color: rgb(247, 247, 247);">
+    {% for rekl2 in reklama2 %} 
+    <img  style=" padding-bottom: 350px;" class="col-lg-4 col-xl-12 col-sm-10  col-md-4 col-12"  src="/{{rekl2.slika1}}" alt="ne raid">
+  
+    <img style=" padding-bottom: 350px;" class="col-lg-3 col-xl-12 col-sm-10  col-md-3 col-12"  src="/{{rekl2.slika2}}" alt="ne raid">
+  
+    <img style=" padding-bottom: 350px;"  class="col-lg-4 col-xl-12 col-sm-10  col-md-4 col-12"  src="/{{rekl2.slika3}}" alt="ne raid">
+    {% endfor %}
+    </div> 
+
+
+
+{% for proii in proizvod %}
+{% for proi in proii %}
+
+
+<div class="col-lg-12 col-xl-7 col-sm-9  col-md-12 col-12 pc row" style=" ;margin: 0 auto; " >
+  
+
+       
+        
+          {% for pro in proi %}
+          {% if pro.kategorija %}
+
+          <div class="col-lg-9 col-xl-9 col-sm-8  col-md-9 col-8" style=" background-color: white;  margin-top: -70px; height: 40px; margin: 0 auto;">
+            <H4 style=" float: left; color: black;">{{ pro.kategorija }}  </H4></div>
+          <div class="col-lg-3 col-xl-3 col-sm-4  col-md-3 col-4 " style=" background-color: white;  margin-top: -70px; height: 40px; margin: 0 auto;">
+            <a href="/category/{{pro.id}}" id="{{pro.id}}" style=" float: right; color: black; " > 
+              <button class=" my-2 my-sm-0 btn_search " type="submit" style="background-color: red; color: white;">Pogledaj više</button>
+             </a>
+</div> 
+           
+            <div class="col-lg-12 col-xl-12 col-sm-12  col-md-12 col-12" style="height: 1px; margin-top: -50px;margin: 0 auto;"> <hr style="color: red; height: 2px;"></div>
+              
+                
+            
+   
+          {% else %}
+         
+            {% endif %} 
+
+             {% endfor %}
+            
+
+     
+        
+      
+      
+       {% for pro in proi %}
+
+
+          {% if pro.kategorija %}
+
+ 
+          {% else %}
+  
+ 
+            <div class="col-lg-10 col-xl-3 col-sm-9   col-9 col-md-3 link"  style="margin-top: -70px ;margin: 0 auto; "> 
+            <a class="link" href="/svipro/{{ pro.id }}/{{ pro.id_kategorija }}/{{ pro.id_podkategorija }}" id="{{ pro.id }},{{ pro.id_kategorija }},{{ pro.id_podkategorija }}">
+                <div class="wsk-cp-product ">
+                  <div class="wsk-cp-img">
+                   <img src="/{{ pro.slika }}" alt="Product" class="img-responsive" />
+                  
+                    </div>
+                  <div class="wsk-cp-text" style="padding-top: 100%;">
+  
+                    <div class="title-product">
+                      <h3>{{ pro.naziv }}</h3>
+                    </div>
+                    <div class="description-prod">
+
+                      <p>{{ pro.opis }}</p>
+                    </div>
+                    <div class="category">
+                    
+
+
+                      </div>
+                    <div class="card-footer">
+                      <div class="wcf-left"><span class="price">{{ pro.cijena }}</span></div>
+                      <div class="korpica">
+                      <a href="/shopCart/{{ pro.id }}" id="{{ pro.id }}" style="float: right; padding-right: 6px; padding-top: 6px;"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"  class="bi bi-cart white" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </svg></a>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              </div>
+             
+              {% endif %}
+              {% endfor %}
+             
+           
+           
+       
+</div>
+{% endfor %}   
+<br><br>
+{% endfor %}
+
+{% endblock %}
+

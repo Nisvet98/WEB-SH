@@ -1,0 +1,53 @@
+{% extends "adminBase.html" %}
+{% block content %}
+{% if user.is_authenticated and user.is_admin %}
+
+
+<h2>Lista artikala </h2><br><br>
+<form method="POST" action="{% url 'adminSearch' %}" > 
+  {% csrf_token %}
+ 
+  <input name="asearched" class="col-xl-8 col-lg-7 col-sm-6 col-md-6 col-12 search " type="search" placeholder="Search" aria-label="Search">
+ <button class="col-xl-3 col-lg-4 col-sm-6 col-md-6 col-12 btn_search   " type="submit" style="background-color: red; color: white;">Search</button>
+
+</form><br><br>
+<div style=" height: 50px; width: 1000px; ">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Br</th>
+        <th scope="col">Ime</th>
+        <th scope="col">Prezime</th>
+        <th scope="col">Broj</th>
+        <th scope="col">Adresa</th>
+        <th scope="col">Email</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Vrijeme registracije</th>
+        <th scope="col">Vrijeme posljednjeg ulogovanja</th>
+   
+      </tr>
+    </thead>
+    <tbody>
+  
+     
+      <tr>{% for proi in lista %} 
+        <td> {{ forloop.counter }} </td>
+        
+        <td> {{ proi.firstname }} </td>
+        <td>{{ proi.lastname }}</td>
+        <td>{{ proi.number }}</td>
+        <td>{{ proi.address }}</td>
+        <td>{{ proi.email }}</td>
+        <td>{{ proi.gender }}</td>
+        <td>{{ proi.date_joined }}</td>
+        <td>{{ proi.last_login }}</td>
+
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+ 
+
+{% endif %}
+{% endblock %}

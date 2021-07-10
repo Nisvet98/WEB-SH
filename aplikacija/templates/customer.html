@@ -1,0 +1,57 @@
+{% extends "adminBase.html" %}
+{% block content %}
+{% if user.is_authenticated and user.is_admin %}
+        <td> {% for proi in customers %} 
+
+        
+        
+        {% endfor %}</td>
+
+<br><br>
+
+  <table class="table table-bordered" >
+    <thead>
+      <tr>
+        <th scope="col">Br</th>
+        <th scope="col">fistname</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Number</th>
+        <th scope="col">id_customer</th>
+        <th scope="col">iznos</th>
+        <th scope="col">proizvodi</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for proi in customers %} 
+      <tr>
+    
+        <td> {{ forloop.counter }} </td>
+          
+        <td> {{ proi.firstname }} </td>
+        <td> {{ proi.lastname }} </td>
+        <td> {{ proi.email }} </td>
+        <td> {{ proi.address }} </td>
+        <td> {{ proi.number }} </td>
+        <td> {{ proi.id_customer }} </td>
+        <td>{{ proi.cijena }}</td> 
+        <td>{{ proi.proizvodi }}</td>
+        
+      </tr>
+  {% endfor %}
+    </tbody>
+  </table>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock %}
+<script src="/static/drop_style.js"></script>

@@ -1,0 +1,45 @@
+{% extends "adminBase.html" %}
+{% block content %}
+{% if user.is_authenticated and user.is_admin %}
+
+
+<br><br>
+
+  <table class="table table-bordered" >
+    <thead>
+      <tr>
+        <th scope="col">Br</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Meesages</th>
+
+      </tr>
+    </thead>
+    <tbody>
+     {% for proi in customers %} 
+      <tr>
+    
+        <td> {{ forloop.counter }} </td>
+          
+        <td> {{ proi.name }} </td>
+        <td> {{ proi.email }} </td>
+        <td> {{ proi.kmessages }} </td>
+
+        
+      </tr>
+  {% endfor %}
+    </tbody>
+  </table>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock %}
+<script src="/static/drop_style.js"></script>

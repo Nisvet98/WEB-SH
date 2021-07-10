@@ -1,0 +1,251 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/account_style.css">
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="/static/style.css">
+
+
+
+
+</head>
+
+<body>
+
+
+
+    <div id="contact-header " class="row top_ba" style="background-color:
+  
+;"> 
+      
+
+          
+    </div>
+<div class="row" >
+    <nav class="navbar navbar-light justify-content-between " style="background-color:  ">
+        <a class="navbar-brand col-xl-3 col-lg-4  col-sm-12 col-md-12 col-12"> <img class="logo" src="/static/img/logo1.png" ></a>
+
+
+
+
+        <div class="col-xl-6 col-lg-4 col-sm-12 col-md-12 col-12 ">
+        <form method="POST" action="{% url 'search' %}" > 
+           {% csrf_token %}
+          
+           <input name="searched" class="col-xl-8 col-lg-7 col-sm-6 col-md-6 col-12 search " type="search" placeholder="Search" aria-label="Search">
+          <button class="col-xl-3 col-lg-4 col-sm-6 col-md-6 col-12 btn_search   " type="submit" style="background-color: red; color: white;">Search</button>
+        
+        </form>
+
+       </div>
+
+
+
+
+
+        
+<div class="col-xl-3 col-lg-4  col-sm-9 col-md-9 col-9 top_bar  row" style="padding-bottom: 17px;">
+          {% if user.is_authenticated %}
+          <div class='social-links'>
+            <div class='social-btn flex-center' style="height: 30px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="24" viewBox="0 0 15 15" > <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+              </svg><span> {{user.email}}</span>
+            </div>
+         
+            <a href="/logout" > 		<div class='social-btn flex-center' id="drugi" style="height: 30px; ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 15 15"> <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+              </svg><span>Logout</span>
+            </div> </a>
+         
+         </div>
+</div>
+         
+       
+
+
+
+
+          
+{% else %}
+<div class="col-xl-12 col-lg-4  col-sm-12 col-md-12 col-12 top_bar  row" style="padding-bottom: 8px;">
+<div class='social-links'>
+<a href="/login" > 		<div class='social-btn flex-center' id="drugi" style="height: 30px; ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 15 15">   <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+              </svg><span>Login</span>
+            </div> </a>
+<a href="/register" > 		<div class='social-btn flex-center' id="drugi" style="height: 30px; ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 15 15"> <i style="font-size:24px; padding-right: 13px;" class="fa">&#xf25d;</i>
+              </svg><span class="glyphicon glyphicon-registration-mark">Register</span>
+            </div> </a>
+            
+</div>
+</div>
+{% endif %}
+
+
+
+
+
+        
+      </nav>
+</div>
+<div class="row " style=" width: 100vw; position: relative; margin-left: -50vw; left: 50%;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: red ; ">
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown" style="justify-content: center;">
+
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home" style="color: white; padding-left:50px;">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about"style="color: white;padding-left:50px;">O nama </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/kontakt"style="color: white;padding-left:50px;">Kontakt</a>
+      </li>
+      <li class="nav-item dropdown">
+
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"style="color: white;padding-left:50px;">Kategorije
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+  
+            {% if  request.path  == '/home/' %}
+            {% for proii in proizvod %}
+            {% for proi in proii %} 
+            {% for pro in proi %}
+
+
+            
+            {% if pro.kategorija %}
+            {% if  pro.id != 1 %}
+  
+            <li><a tabindex="-1" href="/category/{{pro.id}}" id="{{pro.id}}" style="text-decoration: none; color: red; padding-left: 7px;">{{ pro.kategorija }}</a></li>
+            
+            {% else %}
+              <li class="dropdown-submenu">
+              <a class="test" tabindex="-1" href="#" style="text-decoration: none; color: red; padding-left: 7px;">{{ pro.kategorija }} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% for pod in cate3 %}
+              <li><a tabindex="-1" href="/podkategorija/{{pod.id}}" id="{{pod.id}}" style="text-decoration: none; color: red; padding-left: 7px;">{{ pod.periferija_i_memorija }}</a></li>
+               {% endfor %}
+               </ul>
+            </li>
+                     
+            
+            
+            {% endif %}
+            {% else %}
+  
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+            {% endfor %}
+            {% else %}
+  
+            {% for pro in cate2 %}
+            {% if pro.kategorija %}
+            {% if  pro.id != 1 %}
+            <li><a tabindex="-1" href="/category/{{pro.id}}" id="{{pro.id}}" style="text-decoration: none; color: red; padding-left: 7px;">{{ pro.kategorija }}</a></li>
+            {% else %}
+            <li class="dropdown-submenu">
+              <a class="test" tabindex="-1" href="#" style="text-decoration: none; color: red; padding-left: 7px;">{{ pro.kategorija }} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% for pod in cate3 %}
+              <li><a tabindex="-1" href="/podkategorija/{{pod.id}}" id="{{pod.id}}" style="text-decoration: none; color: red; padding-left: 7px;">{{ pod.periferija_i_memorija }}</a></li>
+               {% endfor %}
+               </ul>
+            </li>
+            {% endif %}
+            {% else %}
+  
+            {% endif %}
+            {% endfor %}
+  
+            {% endif %}
+            
+          </ul>
+        </div>
+      </li>
+    </ul>
+ 
+  
+  <div style="padding-left: 50px;">
+  <a href="/shoppingCart/" style="float: left;"> 
+    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"  class="bi bi-cart white" viewBox="0 0 16 16" style="background-color: red;">
+    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </svg></a>
+  <p class="img-fluid rounded-circle" style="float: right; background-color:rgb(230, 230, 230); color:red; width: 20px; height: 20px; text-align: center;"> {{ broj }}  </p>
+  
+</div>
+</div>  
+</nav>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+<script src="/static/nav_style.js"></script>
+
+
+</body>
+</html>

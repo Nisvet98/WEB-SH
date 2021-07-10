@@ -1,0 +1,49 @@
+#contact-header{
+    background-color:rgb(230, 230, 230);
+    height: 33px;
+}
+.user{
+    border-left: 2px solid black;
+}
+
+.top_bar{
+    padding-top: 5px;
+    content: normal;
+}
+
+
+.search {
+    border-radius: 5px;
+    height: 37px;
+    margin-top: 2px;
+    
+    border: 2px solid rgb(231, 228, 228);
+}
+
+.btn_search{
+    border-radius: 5px;
+    height: 33px;
+    margin-top: 2px;
+    border: 1px solid rgb(188, 188, 190);
+}
+
+.logo{
+    height:50px;
+    width: 230px;
+    margin-bottom: -4px;
+    margin-top: -4px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

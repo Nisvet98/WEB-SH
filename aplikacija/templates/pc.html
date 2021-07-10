@@ -1,0 +1,71 @@
+
+{% extends 'adminBase.html' %}
+{% block content %}
+{% if user.is_authenticated and user.is_admin %}
+<h2>Objavi artikal</h2>
+  
+<form method = "post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <label for="exampleFormControlInput1">Naziv</label>
+    <input type="text" class="form-control"  name="naziv">
+
+    <label for="exampleFormControlTextarea1">Opis</label>
+    <input type="text" class="form-control"  name="opis">
+
+    <label for="exampleFormControlInput1">Cijena</label>
+    <input type="text" class="form-control"  name="cijena">
+
+   <label for="exampleFormControlInput1">Izdvojen</label>
+    <input type="text" class="form-control"  name="izdvojen">
+
+  
+  <label for="exampleFormControlFile1">Example file input 1</label>
+    <input type="file" class="form-control"  name="slika" >
+
+  <label for="exampleFormControlFile1">Example file input 2</label>
+    <input type="file" class="form-control"  name="slika2" >
+
+  <label for="exampleFormControlFile1">Example file input 3</label>
+    <input type="file" class="form-control"  name="slika3" >
+
+  <label for="exampleFormControlFile1">Example file input 4</label>
+    <input type="file" class="form-control"  name="slika4" >
+  
+
+
+
+
+
+  
+   
+  <select name="id_kategorija" id="cars" >
+  <option value="">NONE</option>
+  {% for cat in kat %}
+   <option value="{{cat.id}}" name="id_kategorija" >{{cat.kategorija}}</option>
+  {%  endfor %}
+</select>
+
+<select name="id_podkategorija" id="cars" >
+  <option value="" >NONE</option>
+  {% for pod_kateg in pod_kat %}
+  <option value="{{pod_kateg.id}}" name="id_podkategorija" >{{pod_kateg.periferija_i_memorija}}</option>
+ 
+
+   {%  endfor %}
+</select>
+
+  
+
+
+
+
+<button type="submit">Upload</button>
+</form>
+
+{% endif %}
+{% endblock %}
+
+
+
+<script src="/static/drop_style.js"></script>

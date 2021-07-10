@@ -1,0 +1,37 @@
+{% extends "adminBase.html" %}
+{% block content %}
+{% if user.is_authenticated and user.is_admin %}
+
+</form><br><br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Br</th>
+        <th scope="col">Naziv</th>
+        <th scope="col">Cijena</th>
+        <th scope="col">Slika</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+   
+      </tr>
+    </thead>
+    <tbody>
+  
+     
+      <tr>{% for proi in rez %} 
+        <td> {{ forloop.counter }} </td>
+        
+        <td> {{ proi.naziv }} </td>
+        <td>{{ proi.cijena }}</td>
+        <td> <img src="/{{ proi.slika }}"  style="height: 60px; width: 90px;"> </td>
+        <td><a href="/izlistavanje/update/{{proi.id}}/{{proi.id_kategorija}}/{{proi.id_podkategorija}}" class="btn btn-warning" id ='{{proi.id}},{{proi.id_kategorija}},{{proi.id_podkategorija}}'>edit</a></td>
+        <td><a href="/izlistavanje/delete/{{proi.id}}" class="btn btn-danger" id = '{{proi.id}}'>delete</a></td>
+        
+       
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+{% endblock %}
+<script src="/static/drop_style.js"></script>

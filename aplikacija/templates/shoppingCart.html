@@ -1,0 +1,91 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+         <section class="shopping-cart dark">
+             <div class="container">
+
+                <div class="content">
+                     <div class="row">
+                    {% load multifor %}
+                   
+                       {% for shop in shopPr; id in proi_sel ; kol in shoviwe %} 
+                       
+                       {% for sho in shop %}
+                       
+                       
+                         <div class="col-md-12 col-lg-8">
+                             <div class="items">
+                                 <div class="product">
+                                     <div class="row">
+                                         <div class="col-md-3">
+                                             <img class="img-fluid mx-auto d-block image" src="/{{ sho.slika }}" >
+                                         </div>
+                                         <div class="col-md-8">
+                                             <div class="info">
+                                                 <div class="row">
+                                                     <div class="col-md-5 product-name">
+                                                         <div class="product-name">
+                                                            <a href="/svipro/{{ sho.id }}/{{ sho.id_kategorija }}/{{ sho.id_podkategorija }}" id="{{ sho.id }},{{ sho.id_kategorija }},{{sho.id_podkategorija }}">{{ sho.naziv }}</a>
+                                                             <div class="product-info">
+                                                                 <div>Display: <span class="value">5 inch</span></div>
+                                                                 <div>RAM: <span class="value">4GB</span></div>
+                                                                 <div>Memory: <span class="value">32GB</span></div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-md-4 quantity">
+                                                        <form  method="POST"  action="{% url 'updateK' sho.id %}">
+                                                            {% csrf_token %}
+                                                         <label for="quantity">Quantity</label>
+                                                         <input id="quantity" type="number" value ="{{ kol.kolicina }}" name="quantity" class="form-control quantity-input" select onchange="this.form.submit()">
+
+                                                        </form>
+                                                     </div>
+                                                     
+                                                     <div class="col-md-3 price">
+                                                        
+                                                         <span> {% widthratio sho.cijena 1 kol.kolicina %}    </span>
+                                                       
+                       
+                                                     </div><a href="delete/{{ id }}" class="btn btn-danger" style="background-color:#0069d9;" id = '{{ id }}'>Delete</a> 
+                                    
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                          </div>
+                         </div>
+                         
+
+                          <form action="{% url 'phome' cijena %}" method="post">  
+                            </form>
+                        {% endfor %}
+                        {% endfor %}
+                        
+                         <div class="col-md-12 col-lg-4">
+                             <div class="summary">
+                                 <h3>Summary</h3>
+                                 <div class="summary-item"><span class="text">Subtotal</span><span class="price">{{ cijena }}</span></div>
+                                 <div class="summary-item"><span class="text">Discount</span><span class="price">$0</span></div>
+                                 <div class="summary-item"><span class="text">Shipping</span><span class="price">$0</span></div>
+                                 <div class="summary-item"><span class="text">Total</span><span class="price">{{ cijena }}</span></div>
+                             
+                                 <a href="/phome/{{ cijena }}"><button type="button" class="btn btn-primary btn-lg btn-block" >Checkout</button></a>
+                 
+
+                             </div>
+                         </div>
+                     </div> 
+                 </div>
+             </div>
+        </section>
+    </main>
+    
+</body>
+
+{% endblock %}

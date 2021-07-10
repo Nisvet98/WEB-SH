@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-lg-10 col-xl-8 col-sm-9   col-9 col-md-3 link row" style="background-color: white ; margin: auto;" >
+{% for pro in rez %}
+
+<div class="col-md-3 link"> 
+    <a class="link" href="/svipro/{{ pro.id }}/{{ pro.id_kategorija }}/{{ pro.id_podkategorija }}" id="{{ pro.id }},{{ pro.id_kategorija }},{{ pro.id_podkategorija }}">
+        <div class="wsk-cp-product ">
+          <div class="wsk-cp-img">
+           <img src="/{{ pro.slika }}" alt="Product" class="img-responsive" />
+          
+            </div>
+          <div class="wsk-cp-text" style="padding-top: 100%;">
+
+            <div class="title-product">
+              <h3>{{ pro.naziv }}</h3>
+            </div>
+            <div class="description-prod">
+
+              <p>{{ pro.opis }}</p>
+            </div>
+            <div class="category">
+              <a href= "/shopCart/{{ pro.id }}" id="{{ pro.id }}" > <span> Kupi</span></a>
+              </div>
+            <div class="card-footer">
+              <div class="wcf-left"><span class="price">{{ pro.cijena }}</span></div>
+              <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </a>
+      </div>
+
+  
+{% endfor %}
+</div>
+{% endblock %}
+
+
+
+<script src="/static/drop_style.js"></script>
